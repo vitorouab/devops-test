@@ -31,6 +31,9 @@ jobs:
         docker push $IMAGE
         echo "IMAGE=$IMAGE" >> $GITHUB_ENV
 
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3      
+
     - name: Deploy with Terraform
       run: |
         cd terraform
