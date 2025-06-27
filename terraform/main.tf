@@ -33,8 +33,25 @@ resource "aws_security_group" "web" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
   }
+
+  egress {
+   from_port = 0
+   to_port = 0
+   protocol = "-1"
+   cidr_blocks = ["0.0.0.0/0"]
+ }
+ 
 }
+
+resource "aws_key_pair" "my_key" {
+     key_name   = "my-ssh-key"
+     public_key = file("~/.ssh/id_ed25519.pub")
+   }
 
 # ECR Repository
 resource "aws_ecr_repository" "app" {
@@ -46,8 +63,9 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   subnet_id     = data.aws_subnets.default.ids[0]
+  key_name      = aws_key_pair.my_key.key_name
   vpc_security_group_ids = [aws_security_group.web.id]
-  
+
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update
