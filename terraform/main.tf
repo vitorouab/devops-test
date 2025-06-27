@@ -72,7 +72,7 @@ resource "aws_instance" "web" {
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update
-              sudo apt-get install -y docker.io
+              sudo apt-get install -y docker.io awscli
               aws ecr get-login-password --region ${var.region} | sudo docker login --username AWS --password-stdin ${aws_ecr_repository.app.repository_url}
               sudo docker run -d -p 80:80 ${aws_ecr_repository.app.repository_url}:latest
               EOF
