@@ -1,5 +1,3 @@
-variable "project_id" {}
 variable "region" {
-  default = "us-central1"
+  default = "sa-east-1"
 }
-variable "image" {}
