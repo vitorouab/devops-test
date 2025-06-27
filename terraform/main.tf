@@ -6,7 +6,7 @@ terraform {
   backend "s3" {
     bucket = "devops-test-nadjim"
     key    = "state/terraform"
-    region = var.region
+    region = "sa-east-1"
   }
 }
 
