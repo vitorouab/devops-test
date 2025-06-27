@@ -74,7 +74,7 @@ resource "aws_instance" "web" {
               sudo apt-get update
               sudo apt-get install -y docker.io awscli
               aws ecr get-login-password --region ${var.region} | sudo docker login --username AWS --password-stdin ${aws_ecr_repository.app.repository_url}
-              sudo docker run -d -p 80:80 ${aws_ecr_repository.app.repository_url}:latest
+              sudo docker run -d -p 80:80 948419451270.dkr.ecr.sa-east-1.amazonaws.com/hello-world:latest
               EOF
 
   tags = {
