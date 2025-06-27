@@ -81,11 +81,6 @@ resource "aws_iam_role_policy_attachment" "ecr_pull" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
 
-resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "ec2_ecr_profile"
-  role = aws_iam_role.ec2_role.name
-}
-
 # Ubuntu AMI
 data "aws_ami" "ubuntu" {
   most_recent = true
