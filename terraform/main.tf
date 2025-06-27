@@ -4,13 +4,13 @@ provider "google" {
 }
 
 resource "google_artifact_registry_repository" "docker_repo" {
-  name     = "my-docker-repo"
+  name     = "flask-app"
   format   = "DOCKER"
   location = var.region
 }
 
 resource "google_cloud_run_service" "app" {
-  name     = "my-docker-app"
+  name     = "my-app"
   location = var.region
 
   template {

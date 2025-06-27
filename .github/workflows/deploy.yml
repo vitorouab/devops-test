@@ -26,7 +26,7 @@ jobs:
 
     - name: Build & Push Docker image to Artifact Registry
       run: |
-        IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/my-docker-repo/my-app:latest"
+        IMAGE="${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/flask-app/my-app:latest"
         docker build -t $IMAGE ./app
         docker push $IMAGE
         echo "IMAGE=$IMAGE" >> $GITHUB_ENV
