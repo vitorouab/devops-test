@@ -51,7 +51,7 @@ resource "aws_security_group" "web" {
 
 resource "aws_key_pair" "my_key" {
   key_name   = "my-ssh-key"
-  public_key = file("~/.ssh/id_ed25519.pub")
+  public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt43pdgMGRQ78RJadn8P2Mqa1gSSVknQgH0LHADSU8F vitorouab@gmail.com"
 }
 
 # ECR Repository
