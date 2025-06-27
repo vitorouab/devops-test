@@ -2,6 +2,14 @@ provider "aws" {
   region = var.region
 }
 
+terraform {
+  backend "s3" {
+    bucket = "devops-test-nadjim"
+    key    = "state/terraform"
+    region = var.region
+  }
+}
+
 # Use default VPC and subnets
 data "aws_vpc" "default" {
   default = true
